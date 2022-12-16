@@ -1,0 +1,9 @@
+{
+    "Keys": ["xyzmaps"],
+    "Provider": "xyzmaps",
+    "Version": 100,
+    "Experimental": false,
+    "Features": [
+        "OnlineMappingFeature"
+    ]
+}
