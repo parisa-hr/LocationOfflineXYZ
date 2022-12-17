@@ -5,7 +5,6 @@
 
 #include <QtLocation/private/qgeotilefetcher_p.h>
 #include <QMutex>
-#include <QNetworkReply>
 #include <QString>
 
 QT_BEGIN_NAMESPACE
@@ -14,7 +13,6 @@ class QGeoTiledMapReply;
 class QGeoTileSpec;
 class QGeoTiledMappingManagerEngine;
 class QGeoTiledMappingManagerEngineXYZmaps;
-class QNetworkAccessManager;
 
 class QGeoTileFetcherXYZmaps: public QGeoTileFetcher
 {

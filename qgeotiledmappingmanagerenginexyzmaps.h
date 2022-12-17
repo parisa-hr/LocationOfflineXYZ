@@ -15,7 +15,6 @@ QT_BEGIN_NAMESPACE
 
 class QByteArray;
 class QGeoTileSpec;
-class QGeoNetworkAccessManager;
 
 class QGeoTiledMappingManagerEngineXYZmaps: public QGeoTiledMappingManagerEngine
 {

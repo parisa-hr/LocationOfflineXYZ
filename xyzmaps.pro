@@ -2,7 +2,7 @@ TARGET = qtgeoservices_xyzmaps
 QT += location-private positioning-private
 
 PLUGIN_TYPE = geoservices
-PLUGIN_CLASS_NAME = QGeoServiceProviderFactoryXYZmaps network
+PLUGIN_CLASS_NAME = QGeoServiceProviderFactoryXYZmaps
 load(qt_plugin)
 
 HEADERS += \

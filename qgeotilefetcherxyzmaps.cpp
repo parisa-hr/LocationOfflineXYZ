@@ -10,7 +10,6 @@
 #include <QUrl>
 #include <QUrlQuery>
 #include <QTime>
-#include <QNetworkProxy>
 
 #include <math.h>
 
@@ -79,7 +78,9 @@ QGeoTiledMapReply * QGeoTileFetcherXYZmaps::getTileImage(const QGeoTileSpec &spe
 
 QString  QGeoTileFetcherXYZmaps::_getURL(int type, int x, int y, int zoom)
 {
-    return mPath + QString("/%1/%2/%3.png").arg(zoom).arg(x).arg(y);
+    auto  separator = QString(QDir::separator());
+
+    return mPath + QString(separator + "%1" + separator + "%2" + separator + "%3.png").arg(zoom).arg(x).arg(y);
 
     return "";
 }
