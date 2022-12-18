@@ -33,6 +33,7 @@ private:
     Q_DISABLE_COPY(QGeoTileFetcherXYZmaps)
 
     QString mPath;
+    QString                                         mFileSuffix;
     QPointer<QGeoTiledMappingManagerEngineXYZmaps>  m_engineXYZmaps;
     QSize                                           m_tileSize;
 };

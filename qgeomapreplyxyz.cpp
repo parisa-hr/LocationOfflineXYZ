@@ -16,8 +16,10 @@ QGeoMapReplyXYZmaps::QGeoMapReplyXYZmaps(QString path, const QGeoTileSpec &spec,
     {
         if (fp.open(QIODevice::ReadOnly))
         {
+            QFileInfo  i(path);
+
             setMapImageData(fp.readAll());
-            setMapImageFormat("png");
+            setMapImageFormat(i.suffix());
             setFinished(true);
         }
         else

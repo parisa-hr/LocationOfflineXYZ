@@ -10,9 +10,11 @@
 #include <QUrl>
 #include <QUrlQuery>
 #include <QTime>
+#include <QDirIterator>
+#include <QFileInfo>
 
 #include <math.h>
-
+#include <iostream>
 #include <map>
 
 QT_BEGIN_NAMESPACE
@@ -61,6 +63,34 @@ QGeoTileFetcherXYZmaps::QGeoTileFetcherXYZmaps(const QVariantMap                
     if (parameters.contains(QStringLiteral("source")))
     {
         mPath = parameters.value(QStringLiteral("source")).toString();
+
+        auto  separator = QString(QDir::separator());
+
+        if (!mPath.endsWith(separator))
+        {
+            mPath.append(separator);
+        }
+    }
+
+    // find extionsion
+    {
+        QDirIterator  it(mPath, QStringList() << "*", QDir::Files, QDirIterator::Subdirectories);
+
+        while (it.hasNext())
+        {
+            auto  i = it.fileInfo();
+
+            if (i.isFile())
+            {
+                mFileSuffix = i.completeSuffix();
+
+                break;
+            }
+
+            it.next();
+        }
+
+        mPath = parameters.value(QStringLiteral("source")).toString();
     }
 }
 
@@ -78,11 +108,10 @@ QGeoTiledMapReply * QGeoTileFetcherXYZmaps::getTileImage(const QGeoTileSpec &spe
 
 QString  QGeoTileFetcherXYZmaps::_getURL(int type, int x, int y, int zoom)
 {
-    auto  separator = QString(QDir::separator());
+    auto     separator = QString(QDir::separator());
+    QString  res       = mPath + QString("%1" + separator + "%2" + separator + "%3." + mFileSuffix).arg(zoom).arg(x).arg(y);
 
-    return mPath + QString(separator + "%1" + separator + "%2" + separator + "%3.png").arg(zoom).arg(x).arg(y);
-
-    return "";
+    return res;
 }
 
 QT_END_NAMESPACE
