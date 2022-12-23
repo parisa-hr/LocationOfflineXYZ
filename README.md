@@ -8,10 +8,11 @@ Installation from source
 ------------------------
 
 Qt 5 with the following components:
-    - Core
-    - Location
-    - Location-private
-    - Positioning-private
+
+- Core
+- Location
+- Location-private
+- Positioning-private
 
 For command line builds:
 <pre>
