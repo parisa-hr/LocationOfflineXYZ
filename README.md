@@ -35,7 +35,8 @@ Map {
          name: 'xyzmaps';
          PluginParameter {
             name: 'source'
-            value: '/path/to/map/tiles'
+            value: '/path/to/map/tiles/'
+            
            }
        }
 }
